@@ -1,0 +1,25 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  #MySQL Docker Image
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306  # map localhost port 3306 to 3306 in mysql container to allow for MySqlWorkbench to access
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+      MYSQL_DATABASE: fid_pong
+    volumes:
+      - ./datadir:/var/lib/mysql  # This maps the persistent storage dir in the docker container to ./datadir,
+                                  # so that container can be stopped and started, and still have data present
+
+  # Database Admin web tool, cheap, easy DB UI
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
