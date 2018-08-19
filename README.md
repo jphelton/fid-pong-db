@@ -13,6 +13,10 @@ Home for the Fid Pong Database DDL's and deployment scripts.
 ## Steps
 
 ### Start MySQL and Deploy Schema
+
+This project relies on being able to run MySQL in a docker container locally for testing.
+Please consult [The MySQL DockerHub Repo](https://hub.docker.com/_/mysql/) for support.
+
 1. Setup scripts have been provided in the `./bin` folder
 2. to start MySQL locally run `./bin/start_mysql.sh`
     * This will run a MySQL container, and an adminer container
